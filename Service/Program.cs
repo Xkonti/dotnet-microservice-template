@@ -1,6 +1,8 @@
 using Serilog;
 using Service.Configuration;
 using Service.Models;
+using Service.Models.Dtos;
+using Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,8 @@ builder.Services.ConfigurePostgreSql(builder.Configuration.GetSection("PostgreSq
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IBookService, BookService>();
 
 // Setup mapper and mapping profiles.
 MappingProfiles.SetupMapper();
