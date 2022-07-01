@@ -9,6 +9,8 @@ Log.Information("Logging configured");
 
 // Add services to the container.
 
+builder.Services.ConfigurePostgreSql(builder.Configuration.GetSection("PostgreSql").Get<PostgreSqlConfiguration>());
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
