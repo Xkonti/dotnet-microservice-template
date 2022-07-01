@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Service.Models;
 
 namespace Service.Data;
 
 public class DataContext : DbContext
 {
     // Register DbSets here
-    // public DbSet<ModelName> SetName { get; set; }
+    public DbSet<Book> Books { get; set; }
     
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
