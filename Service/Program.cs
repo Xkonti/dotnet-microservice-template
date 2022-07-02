@@ -1,7 +1,6 @@
 using Serilog;
 using Service.Configuration;
 using Service.Models;
-using Service.Models.Dtos;
 using Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
