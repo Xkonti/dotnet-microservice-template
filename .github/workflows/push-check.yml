@@ -22,3 +22,5 @@ jobs:
       run: dotnet restore ./DotNetMicroserviceTemplate.sln
     - name: Build
       run: dotnet build --no-restore ./Service/Service.csproj
+    - name: Test
+      run: dotnet test --verbosity minimal
