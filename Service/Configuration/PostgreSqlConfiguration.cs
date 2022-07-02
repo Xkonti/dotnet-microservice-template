@@ -52,7 +52,7 @@ public static class Configurator
         {
             opt.UseNpgsql(
                 connectionString,
-                b => b.MigrationsAssembly("DotNetMicroserviceTemplate.EF")
+                b => b.MigrationsAssembly("Service")
             );
         });
     }
