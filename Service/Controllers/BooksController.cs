@@ -6,7 +6,7 @@ using Service.Services;
 namespace Service.Controllers;
 
 [ApiController]
-[Route("/v1/books")]
+[Route("api/v1/books")]
 public class BooksController : ControllerBase
 {
     private readonly IBookService _bookService;
