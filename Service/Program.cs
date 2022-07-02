@@ -27,6 +27,12 @@ MappingProfiles.SetupMapper();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+if (app.Environment.IsDevelopment())
+{
+    Log.Information("Running in development mode");
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -37,6 +43,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Migrate or run
 if (args.Contains("--migrate"))
 {
     Log.Information("Starting in database migration mode");
