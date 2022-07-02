@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Service.Configuration;
+using Service.Data;
 using Service.Models;
 using Service.Services;
 
@@ -35,4 +37,20 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+if (args.Contains("--migrate"))
+{
+    Log.Information("Starting in database migration mode");
+    using var serviceScope = app.Services.CreateScope();
+    var context = serviceScope.ServiceProvider.GetService<DataContext>();
+    if (context is null)
+    {
+        throw new ApplicationException("Fail to create database context");
+    }
+    
+    context.Database.Migrate();
+    Log.Information("Finished migrations. Exiting...");
+}
+else
+{
+    app.Run();
+}
