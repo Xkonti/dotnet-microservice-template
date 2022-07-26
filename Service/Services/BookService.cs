@@ -16,14 +16,12 @@ public class BookService : IBookService
     public async Task<Book?> GetBookById(Guid id)
     {
         return await _context.Books
-            .NotDeleted()
             .FirstOrDefaultAsync(b => b.Id == id);
     }
 
     public async Task<IEnumerable<Book>> GetBooksByTitle(string title)
     {
         return await _context.Books
-            .NotDeleted()
             .Where(b => b.Title == title.Trim())
             .ToListAsync();
     }
