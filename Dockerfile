@@ -6,8 +6,8 @@ COPY . .
 WORKDIR "/src/Service"
 
 RUN dotnet publish "Service.csproj" -c Release -o /app/publish \
-    -- runtime alpine-x64 \
-    -- self-contained true \
+    --runtime alpine-x64 \
+    --self-contained true \
     /p:PublishTrimmed=true \
     /p:PublishSingleFile=true
 
